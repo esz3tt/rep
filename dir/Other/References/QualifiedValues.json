@@ -1,0 +1,9 @@
+{
+  "QualifiedValues": [
+    {
+      "Kind": "default.cds_msdyn_fileupload_forms",
+      "Namespace": "File Uploads (Forms)",
+      "Values": {}
+    }
+  ]
+}

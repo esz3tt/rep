@@ -1,0 +1,207 @@
+<application xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:service="https://germany-001.azure-apihub.net/apim/adobecreativecloud" xmlns:siena="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11" siena:serviceId="AdobeCreativeCloud" xmlns="http://wadl.dev.java.net/2009/02">
+  <doc title="Adobe Creative Cloud">Connect to Adobe Creative Cloud to manage your assets. You can perform various actions such as create, get, and delete assets on Creative Cloud. You can also choose to be notified when an asset is added or updated on Creative Cloud.</doc>
+  <grammars>
+    <jsonTypes targetNamespace="https://germany-001.azure-apihub.net/apim/adobecreativecloud" xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
+      <string name="WebhookUrl_webhookUrl_def" />
+      <object name="WebhookUrl">
+        <property name="webhookUrl" type="string" />
+      </object>
+      <array typeRef="AssetMetadata" name="DirectoryListing_children_def" />
+      <object name="DirectoryListing">
+        <property name="children" typeRef="DirectoryListing_children_def" />
+      </object>
+      <string name="StorageDirectory_path_def" />
+      <string name="StorageDirectory_name_def" />
+      <string name="StorageDirectory_MediaType_def" />
+      <boolean name="StorageDirectory_IsFolder_def" />
+      <object name="StorageDirectory">
+        <property name="path" type="string" />
+        <property name="name" type="string" />
+        <property name="MediaType" type="string" />
+        <property name="IsFolder" type="boolean" />
+      </object>
+      <string name="CreatedAssetDetails_urn_def" />
+      <string name="CreatedAssetDetails_name_def" />
+      <string name="CreatedAssetDetails_path_def" />
+      <string name="CreatedAssetDetails_link_def" />
+      <object name="CreatedAssetDetails">
+        <property name="urn" type="string" />
+        <property name="name" type="string" />
+        <property name="path" type="string" />
+        <property name="link" type="string" />
+      </object>
+      <string name="AssetMetadata_urn_def" />
+      <string name="AssetMetadata_name_def" />
+      <string name="AssetMetadata_path_def" />
+      <string name="AssetMetadata_type_def" />
+      <string name="AssetMetadata_created_def" />
+      <string name="AssetMetadata_modified_def" />
+      <string name="AssetMetadata_etag_def" />
+      <string name="AssetMetadata_size_def" />
+      <string name="AssetMetadata_link_def" />
+      <object name="AssetMetadata">
+        <property name="urn" type="string" />
+        <property name="name" type="string" />
+        <property name="path" type="string" />
+        <property name="type" type="string" />
+        <property name="created" type="string" />
+        <property name="modified" type="string" />
+        <property name="etag" type="string" />
+        <property name="size" type="string" />
+        <property name="link" type="string" />
+      </object>
+      <string name="CopyAssetRequest_from_def" />
+      <string name="CopyAssetRequest_to_def" />
+      <object name="CopyAssetRequest">
+        <property name="from" type="string" />
+        <property name="to" type="string" />
+      </object>
+      <string name="EventSchema_event_def_activitystreams_ux3A_object_def_xdmAsset_ux3A_asset_id_def" />
+      <string name="EventSchema_event_def_activitystreams_ux3A_object_def_xdmAsset_ux3A_asset_name_def" />
+      <string name="EventSchema_event_def_activitystreams_ux3A_object_def_xdmAsset_ux3A_format_def" />
+      <string name="EventSchema_event_def_activitystreams_ux3A_object_def_xdmAsset_ux3A_path_def" />
+      <object name="EventSchema_event_def_activitystreams_ux3A_object_def">
+        <property name="xdmAsset:asset_id" type="string" />
+        <property name="xdmAsset:asset_name" type="string" />
+        <property name="xdmAsset:format" type="string" />
+        <property name="xdmAsset:path" type="string" />
+      </object>
+      <object name="EventSchema_event_def">
+        <property name="activitystreams:object" typeRef="EventSchema_event_def_activitystreams_ux3A_object_def" />
+      </object>
+      <object name="EventSchema">
+        <property name="event" typeRef="EventSchema_event_def" />
+      </object>
+      <string name="CreateAsset_param_body_def" />
+      <string name="GetContentById_responses_200_def" />
+      <string name="GetContentByPath_responses_200_def" />
+    </jsonTypes>
+  </grammars>
+  <resources siena:authenticationProviderHref="#PowerAppAuth" base="https://germany-001.azure-apihub.net/apim/adobecreativecloud">
+    <resource path="/{connectionId}/storage/cc/asset">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="POST" id="CreateAsset" actionName="CreateAsset" visibility="advanced" siena:isDeprecated="false">
+        <doc title="Create a new asset&#xA;This operation creates a new asset on Creative Cloud." />
+        <request>
+          <param style="query" name="path" type="xs:string" required="true" default="files">
+            <doc title="Specify the folder path where the asset will be created." />
+          </param>
+          <param style="query" name="name" type="xs:string" required="true">
+            <doc title="Specify the name of the asset." />
+          </param>
+          <representation mediaType="application/octet-stream" />
+        </request>
+        <response>
+          <representation mediaType="application/json" element="service:CreatedAssetDetails" />
+        </response>
+      </method>
+    </resource>
+    <resource path="/{connectionId}/storage/cc/asset/id/content">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="GET" id="GetContentById" actionName="GetContentById" visibility="important" siena:isDeprecated="false">
+        <doc title="Get asset contents using asset id&#xA;This operation gets the asset contents for the given asset id." />
+        <request>
+          <param style="query" name="asset_id" type="xs:string" required="true">
+            <doc title="Specify the asset's unique id." />
+          </param>
+        </request>
+        <response>
+          <representation mediaType="application/octet-stream" />
+        </response>
+      </method>
+    </resource>
+    <resource path="/{connectionId}/storage/cc/asset/id/metadata">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="GET" id="GetMetadataById" actionName="GetMetadataById" visibility="important" siena:isDeprecated="false">
+        <doc title="Get asset details using asset id&#xA;This operation gets the asset details for the given asset id." />
+        <request>
+          <param style="query" name="asset_id" type="xs:string" required="true">
+            <doc title="Specify the asset's unique id." />
+          </param>
+        </request>
+        <response>
+          <representation mediaType="application/json" element="service:AssetMetadata" />
+        </response>
+      </method>
+    </resource>
+    <resource path="/{connectionId}/storage/cc/asset/path">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="DELETE" id="DeleteAssetByPath" actionName="DeleteAssetByPath" visibility="advanced" siena:isDeprecated="false">
+        <doc title="Delete asset&#xA;This operation deletes the asset at the given asset path." />
+        <request>
+          <param style="query" name="path" type="xs:string" required="true">
+            <doc title="Specify the path to the asset." />
+          </param>
+          <param style="header" name="If-Match" type="xs:string" required="true" fixed="*">
+            <doc title="Specify the asset's ETag." />
+          </param>
+        </request>
+      </method>
+    </resource>
+    <resource path="/{connectionId}/storage/cc/asset/path/content">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="GET" id="GetContentByPath" actionName="GetContentByPath" siena:isDeprecated="false">
+        <doc title="Get asset contents using path&#xA;This operation gets the asset contents for the given asset path." />
+        <request>
+          <param style="query" name="path" type="xs:string" required="true">
+            <doc title="Specify the path to the asset." />
+          </param>
+        </request>
+        <response>
+          <representation mediaType="application/octet-stream" />
+        </response>
+      </method>
+    </resource>
+    <resource path="/{connectionId}/storage/cc/asset/path/metadata">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="GET" id="GetMetadataByPath" actionName="GetMetadataByPath" siena:isDeprecated="false">
+        <doc title="Get asset details using path&#xA;This operation gets the asset details for the given asset path." />
+        <request>
+          <param style="query" name="path" type="xs:string" required="true">
+            <doc title="Specify the path to the asset." />
+          </param>
+        </request>
+        <response>
+          <representation mediaType="application/json" element="service:AssetMetadata" />
+        </response>
+      </method>
+    </resource>
+    <resource path="/{connectionId}/storage/cc/directory/path/assets">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="GET" id="ListFilesInDirectory" actionName="ListFilesInDirectory" visibility="important" siena:isDeprecated="false">
+        <doc title="List all assets in folder&#xA;This operation lists all assets in the given folder." />
+        <request>
+          <param style="query" name="path" type="xs:string" required="true" default="files">
+            <doc title="Specify the path to the folder." />
+          </param>
+        </request>
+        <response>
+          <representation mediaType="application/json" element="service:DirectoryListing" />
+        </response>
+      </method>
+    </resource>
+    <resource path="/{connectionId}/storage/cc/op/copy">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="POST" id="CopyAsset" actionName="CopyAsset" visibility="advanced" siena:isDeprecated="false">
+        <doc title="Copy asset&#xA;This operation copies an asset to the destination asset path." />
+        <request>
+          <representation mediaType="application/json">
+            <param style="plain" name="from" path="/from" type="xs:string" required="true" />
+            <param style="plain" name="to" path="/to" type="xs:string" required="true" />
+          </representation>
+        </request>
+        <response>
+          <representation mediaType="application/json" element="service:CreatedAssetDetails" />
+        </response>
+      </method>
+    </resource>
+  </resources>
+  <authenticationProviders xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
+    <connectionProvider id="PowerAppAuth" siena:connectionProviderId="shared_adobecreativecloud" />
+  </authenticationProviders>
+  <template xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
+    <variable name="connectionId">
+      <modifyParams style="template" name="connectionId" attribute="fixed" />
+    </variable>
+  </template>
+</application>

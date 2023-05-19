@@ -1,0 +1,52 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+    "CdpRevision": {
+      "BaseUrl": "/",
+      "LastChangedTimeString": "2023-03-30T16:24:17.9940000Z",
+      "RevisionNumber": 1
+    },
+    "ConnectedDataSourceInfoNameMapping": {
+      "{FilenameWithExtension}": "Dateiname mit Erweiterung",
+      "{FullPath}": "Vollständiger Pfad",
+      "{Identifier}": "Bezeichner",
+      "{IsCheckedOut}": "Ausgecheckt",
+      "{IsFolder}": "IstOrdner",
+      "{Link}": "Link zu Element",
+      "{ModerationComment}": "Die der Inhaltsgenehmigung dieses Listenelements zugeordnete Kommentare.",
+      "{ModerationStatus}": "Inhaltsgenehmigungsstatus",
+      "{Name}": "Name",
+      "{Path}": "Ordnerpfad",
+      "{Thumbnail}": "Thumbnail",
+      "{TriggerWindowEndToken}": "Token für Ende des Zeitfensters auslösen",
+      "{TriggerWindowStartToken}": "Token für Start des Zeitfensters auslösen",
+      "{VersionNumber}": "Versionsnummer",
+      "Author": "Erstellt von",
+      "Author#Claims": "Erstellt von Claims",
+      "CheckoutUser": "Ausgecheckt von",
+      "CheckoutUser#Claims": "Ausgecheckt von Claims",
+      "ComplianceAssetId": "Complianceobjekt-ID",
+      "Created": "Erstellt",
+      "Editor": "Geändert von",
+      "Editor#Claims": "Geändert von Claims",
+      "ID": "ID",
+      "MediaServiceAutoTags": "Tags",
+      "MediaServiceOCR": "Extracted Text",
+      "Modified": "Geändert",
+      "OData__ColorTag": "Farbkennzeichnung",
+      "OData__DisplayName": "Vertraulichkeit",
+      "OData__ExtendedDescription": "Beschreibung",
+      "SharedWithDetails": "Freigegeben für - Details",
+      "SharedWithUsers": "Freigegeben für",
+      "SharedWithUsers#Claims": "Freigegeben für Claims",
+      "SharedWithUsers@odata.type": "SharedWithUsers (SharedWithUsers@odata.type)",
+      "Title": "Titel"
+    },
+    "DatasetName": "https://godiam.sharepoint.com/sites/2d7893e1a8",
+    "EncodeDataset": true,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "Name": "Dokumente",
+    "Type": "ConnectedDataSourceInfo"
+  }
+]

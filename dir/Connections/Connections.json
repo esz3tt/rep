@@ -1,0 +1,50 @@
+{
+  "a62a85ef-b2e9-403f-af17-194c03c7e6cb": {
+    "connectionRef": {
+      "apiTier": "Standard",
+      "bypassConsent": true,
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1568/1.0.1568.2756/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://godiam.sharepoint.com": {
+        "dataSources": {
+          "Websiteseiten": {
+            "tableName": "8c69bf19-ca70-4b90-9892-c350af326848"
+          }
+        }
+      },
+      "https://godiam.sharepoint.com/sites/2d7893e1a8": {
+        "dataSources": {
+          "Dokumente": {
+            "tableName": "b8e5e45d-dafe-4215-97bd-9af501332266"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Websiteseiten",
+      "Dokumente"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "a62a85ef-b2e9-403f-af17-194c03c7e6cb"
+  },
+  "f7627b24-812f-4142-be2d-66173b835440": {
+    "connectionRef": {
+      "displayName": "Adobe Creative Cloud",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1551/1.0.1551.2693/adobecreativecloud/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_adobecreativecloud"
+    },
+    "datasets": {},
+    "dataSources": [
+      "AdobeCreativeCloud"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "f7627b24-812f-4142-be2d-66173b835440"
+  }
+}
